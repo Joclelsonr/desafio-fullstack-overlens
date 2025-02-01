@@ -7,7 +7,7 @@ export function ShareContent({ content }: { content: string }) {
   return (
     <div
       className={`prose max-w-none mb-8  ${
-        theme === "dark" ? "prose-invert" : ""
+        theme === "dark" || "system" ? "prose-invert" : ""
       }`}
       dangerouslySetInnerHTML={{ __html: content }}
     />

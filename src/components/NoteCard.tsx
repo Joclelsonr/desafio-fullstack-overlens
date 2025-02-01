@@ -47,7 +47,7 @@ export function NoteCard({
       <CardContent>
         <div
           className={`prose prose-sm prose-slate max-w-none ${
-            theme === "dark" ? "prose-invert" : ""
+            theme === "dark" || "system" ? "prose-invert" : ""
           }`}
           dangerouslySetInnerHTML={{ __html: content.slice(0, 180) + "..." }}
         />
