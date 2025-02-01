@@ -2,10 +2,9 @@ import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 import { revalidatePath } from "next/cache";
 
-export async function GET(
-  request: Request,
-  { params }: { params: { id: string } }
-) {
+type Params = Promise<{ id: string }>;
+
+export async function GET(request: Request, { params }: { params: Params }) {
   const { id } = await params;
 
   const note = await prisma.note.findUnique({
@@ -26,10 +25,7 @@ export async function GET(
   return NextResponse.json(note);
 }
 
-export async function PUT(
-  request: Request,
-  { params }: { params: { id: string } }
-) {
+export async function PUT(request: Request, { params }: { params: Params }) {
   const { id } = await params;
   const { title, content, isPublic } = await request.json();
 
@@ -46,11 +42,9 @@ export async function PUT(
   return NextResponse.json(updatedNote);
 }
 
-export async function DELETE(
-  request: Request,
-  { params }: { params: { id: string } }
-) {
+export async function DELETE(request: Request, { params }: { params: Params }) {
   const { id } = await params;
+
   await prisma.note.delete({
     where: { id },
   });
