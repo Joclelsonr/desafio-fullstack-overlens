@@ -3,11 +3,9 @@ import { CustomLinkButton } from "@/components/CustomLinkButton";
 
 import { getNote } from "@/lib/api";
 
-export default async function ViewNote({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
+type DetailsNoteProps = Promise<{ id: string }>;
+
+export default async function Page({ params }: { params: DetailsNoteProps }) {
   const { id } = await params;
   const note = await getNote(id);
 

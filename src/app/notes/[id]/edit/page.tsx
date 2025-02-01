@@ -3,11 +3,9 @@ import { CustomLinkButton } from "@/components/CustomLinkButton";
 
 import { getNoteById } from "../../_actions";
 
-export default async function EditNote({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
+type EditNoteProps = Promise<{ id: string }>;
+
+export default async function Page({ params }: { params: EditNoteProps }) {
   const { id } = await params;
   const note = await getNoteById(id);
 

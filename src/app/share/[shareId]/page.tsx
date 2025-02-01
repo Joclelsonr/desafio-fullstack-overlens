@@ -2,11 +2,9 @@ import { getNoteByShareId } from "@/lib/api";
 import { ShareContent } from "./_components/shareContent";
 import { CustomLinkButton } from "@/components/CustomLinkButton";
 
-export default async function Page({
-  params,
-}: {
-  params: { shareId: string };
-}) {
+type ShareContentProos = Promise<{ shareId: string }>;
+
+export default async function Page({ params }: { params: ShareContentProos }) {
   const { shareId } = await params;
   const note = await getNoteByShareId(shareId);
 
