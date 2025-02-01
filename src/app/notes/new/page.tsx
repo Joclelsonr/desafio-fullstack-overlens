@@ -11,7 +11,7 @@ export default async function NewNote() {
         <h1 className="text-2xl font-bold mb-8 md:text-3xl">Create New Note</h1>
         <CustomLinkButton path="/notes" label="Back to Notes" />
       </div>
-      <NewNoteForm user={session?.user!} />
+      <NewNoteForm user={session?.user} />
     </div>
   );
 }

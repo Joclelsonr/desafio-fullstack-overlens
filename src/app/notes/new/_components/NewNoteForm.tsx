@@ -21,7 +21,7 @@ import { formSchema, FormValues } from "../../schema";
 import { TipTapEditor } from "@/components/TipTapEditor";
 
 type NewNoteFormProps = {
-  user: User;
+  user: User | undefined;
 };
 
 export function NewNoteForm({ user }: NewNoteFormProps) {
@@ -45,7 +45,7 @@ export function NewNoteForm({ user }: NewNoteFormProps) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         ...values,
-        authorId: user.id,
+        authorId: user?.id,
       }),
     });
 
