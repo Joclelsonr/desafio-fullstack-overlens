@@ -16,6 +16,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useRouter } from "next/navigation";
 import { signOut } from "next-auth/react";
 import { ThemeToggle } from "./ThemeToggle";
+import Link from "next/link";
 
 type HeaderProps = {
   user: User | null;
@@ -48,7 +49,9 @@ export function Header({ user }: HeaderProps) {
   return (
     <header className="bg-background border-b">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <div className="text-2xl font-bold text-primary">NotesApp</div>
+        <div className="text-2xl font-bold text-primary">
+          <Link href="/">NotesApp</Link>
+        </div>
         <div className="flex items-center gap-4">
           <ThemeToggle />
           <DropdownMenu>

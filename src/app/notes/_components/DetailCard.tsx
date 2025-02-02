@@ -71,7 +71,7 @@ export function DetailCard({
       <CardContent>
         <div
           className={`prose prose-sm max-w-none ${
-            theme === "dark" || "system" ? "prose-invert" : ""
+            theme === "dark" ? "prose-invert" : ""
           }`}
         >
           <div dangerouslySetInnerHTML={{ __html: content }} />
