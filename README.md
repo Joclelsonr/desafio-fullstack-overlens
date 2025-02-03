@@ -30,7 +30,7 @@
 
 Desenvolver uma plataforma de compartilhamento de anotações. Os usuários devem poder criar, editar, excluir e compartilhar anotações com outros usuários.
 
-#### 🌐 Acesse em: [https://overnote-two.vercel.app](https://overnote-two.vercel.app)
+#### 🌐 Acesse em: [https://overlensnote.vercel.app](https://overlensnote.vercel.app)
 
 ## <a name="tech-stack">⚙️ Tecnologia Utilizadas</a>
 
