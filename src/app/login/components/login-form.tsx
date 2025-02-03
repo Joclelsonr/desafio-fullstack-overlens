@@ -39,26 +39,25 @@ export function LoginForm() {
 
   const { isSubmitting } = form.formState;
 
-  async function onSubmit(data: LoginSchemaType) {
-    const { email, password } = data;
+  async function onSubmit(input: LoginSchemaType) {
+    const { email, password } = input;
 
-    try {
-      const result = await signIn("credentials", {
-        email,
-        password,
-      });
-      if (result?.ok) {
-        router.push("/notes");
-        router.refresh();
-      }
-    } catch (error) {
-      console.error(error);
-      toast({
-        title: "Error",
-        description: "Something went wrong, please try again later.",
-        variant: "destructive",
-      });
+    const result = await signIn("credentials", {
+      email,
+      password,
+    });
+
+    if (result?.ok) {
+      router.push("/notes");
+      router.refresh();
+      return;
     }
+
+    toast({
+      title: "Error",
+      description: "Something went wrong, please try again later.",
+      variant: "destructive",
+    });
   }
 
   return (

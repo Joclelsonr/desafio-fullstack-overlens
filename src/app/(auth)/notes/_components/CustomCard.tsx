@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { toast } from "@/hooks/use-toast";
+import { useTheme } from "next-themes";
 
 import {
   Card,
@@ -10,9 +10,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, Lock, Trash2, Unlock } from "lucide-react";
-import { useTheme } from "next-themes";
+import { ArrowRight, Lock, Unlock } from "lucide-react";
+import { DeleteNote } from "./DeleteNote";
 
 interface CustomCardProps {
   id: string;
@@ -30,23 +29,6 @@ export function CustomCard({
   detailsUrl,
 }: CustomCardProps) {
   const { theme } = useTheme();
-
-  const handleDelete = async () => {
-    const response = await fetch(`/api/notes/${id}`, {
-      method: "DELETE",
-    });
-    if (response.ok) {
-      toast({
-        title: "Note deleted",
-        description: "Your note has been deleted.",
-      });
-    } else {
-      toast({
-        title: "Error deleting note",
-        description: "There was an error deleting your note.",
-      });
-    }
-  };
 
   return (
     <Card className="max-w-md">
@@ -72,10 +54,7 @@ export function CustomCard({
           View Details
           <ArrowRight className="w-4 h-4 ml-1" />
         </Link>
-        <Button className="ml-2" variant="outline" onClick={handleDelete}>
-          <Trash2 className="w-4 h-4" />
-          Delete
-        </Button>
+        <DeleteNote id={id} />
       </CardFooter>
     </Card>
   );
