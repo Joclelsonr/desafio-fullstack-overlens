@@ -1,19 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
+import { getUrl } from "@/lib/get-url";
 
 export async function middleware(request: NextRequest) {
   const token = request.cookies.get("authjs.session-token");
   const pathname = request.nextUrl.pathname;
 
-  if (pathname.startsWith("/notes")) {
-    if (!token) {
-      return NextResponse.redirect(new URL("/login", request.url));
-    }
+  if (pathname === "/login" && token) {
+    return NextResponse.redirect(new URL(getUrl("/notes")));
   }
 
-  if (pathname.startsWith("/login")) {
-    if (token) {
-      return NextResponse.redirect(new URL("/notes", request.url));
-    }
+  if (pathname.includes("/notes") && !token) {
+    return NextResponse.redirect(new URL(getUrl("/login")));
   }
 
   return NextResponse.next();
